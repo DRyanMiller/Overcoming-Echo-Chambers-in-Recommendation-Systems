@@ -1,7 +1,16 @@
-# FI_final_project
+# Addressing the Echo Chamber Problem in Recommendation Systems Using Movie Ratings
 ==============================
 
-This project extends an ALS recommendation system to overcome the Echo Chamber Problem
+The purpose of this project is to create a recommendation system that overcomes the echo chamber problem.  The echo chamber problem occurs when additional information provided to a recommendation system results in a decrease in the diversity of recommendations for a given user.  The result is a recommendation system that reinforces a user’s recorded preferences and fails to provide recommendations outside the user’s typical purview. 
+
+In order to overcome the echo chamber problem, this project builds a system that provides additional recommendations based on the preferences of others who are different, but not too different, from the user.  These additional recommendations are identified by clustering users based on the latent user features from an ALS decomposition of a ratings matrix. Once clusters are created, the top-rated items from users in each cluster can be identified. The top-rated items in each cluster form the set of items from which the recommendations will be extracted.  To get recommendations for a user, the following steps occur:
+1.	The distance between clusters is measured,
+2.	A user is classified into a cluster,
+3.	From the nearest cluster to the user’s cluster, a random selection of items is recommended to the user.
+4.	Step three can be repeated for the k nearest clusters.  In such a case, the proportion of total recommendations selected from a cluster is weighted by the cluster’s distance from the user’s cluster. (For example, for k=3 and a total of 10 recommendations, 5 recommendations may be selected from the nearest cluster, 3 from the second nearest, and 2 from the third nearest.)
+
+The project utilizes the MovieLens dataset (Harper & Konstan, 2015).  The MovieLens dataset is an open source data set containing 20,000,263 user ratings for 27,278 movies. 
+
 ==============================
 
 Project Organization
@@ -47,51 +56,56 @@ Echo_Chamber
 
 ```
 
-## Next steps
----------------
-### Use with github
-As part of the project creation process a local git repository is initialized and committed. If you want to store the repo on github perform the following steps:
+# Use Case
+Companies may want to provide recommendations for products outside a user’s typical recommendations in order to increase sales by getting current customers to buy additional items not previously purchased.
 
-1. Create a an empty repository (no License or README) on github with the name Echo_Chamber.git.
-2. Push the local repo to github. From within the root directory of your local project execute the following:
+# Models
+ALS recommendation engine
+HCA
 
-```
-  git remote add origin https://github.com/(Your Github UserName Here)/Echo_Chamber.git
-  git push -u origin master
-```
+Libraries
+Numpy 
+Pandas
+Pyspark
+Scipy
+Sklearn
+Pyspark ML
 
-3. Create a branch with (replace ```branch_name``` with whatever you want to call your branch):
-```
-  git branch branch_name
-```
-4. Checkout the branch:
-```
-  git checkout branch_name
-```
+# Minimal Viable Product
+Recommender that can return 20 recommendations, 10 from ALS and 10 from echo chamber model.
 
-If you are working with a group do not share jupyter notebooks. The other members of the group should pull from the master repository, create and checkout their own branch, then create separate notebooks within the notebook directories (e.g., copy and rename the original files). Be sure to follow the naming convention. All subsequent work done on the project should be done in the respective branches.
+# Three Difficulties
+1.	How to run the models on AWS
+2.	How to productionize the models as a web application
+3.	How to get linter to work in Atom
 
+# Action plan/schedule 
 
-### Environment Variables
--------------------
-The template includes a file ```.env``` which is used to hold values that shouldn't be shared on github, for example an apikey to be used with an online api or other client credentials. The notebooks make these items accessible locally, but will not retain them in the online github repository. You must install ```python-dotenv``` to access this functionality. You can install it stand alone as follows:
+Day 1 - Project Proposals
 
-```
-  pip install -U python-dotenv
-```
-Or you can install all required packages with the instructions given in the next section.
+Day 2 - First Stinky Model: based on the reduced version of the dataset. The model will include the ALS recommender and the HCA
 
-#### Accessing Environment Variables in Jupyter Notebook
--------------
-Notebook access to the constants and variables stored in the ```.env``` file is described here. In a code cell the line (e.g. assume you have a variable named ```APIKEY = 'Your_APIKEY'``` in the  ```.env``` file)
-```
-  mykey = %env APIKEY`  
-```
-will place the value ```'Your_APIKEY'``` into ```mykey```
+Day 3 -  Expand FSM: Get FSM to provide recommendations from nearest clusters.
+Week 2
+Day 1 – AWS Implementation: Adapt code to full dataset and get code running on AWS
 
-### Installing development requirements
-------------
-If your current environment does not meet requirements for using this template execute the following:
-```
-  pip install -r requirements.txt
-```
+Day 2 - Minimum viable Product 
+
+Day 3 – User Input: Adapt/develop user input code
+
+Day 4 - Substantial Completion, First Practice Presentation: Develop web application
+
+Day 5 – Finish Product: Finish developing web application
+Week 3 
+
+Day 1 	- Documentation Review & Feedback
+
+Day 2   - Document Review & Practice Presentations
+
+Day 3 	- Documentation Review & Dress rehearsal/present to class
+
+Day 4 - Data Science Project Expo
+
+# References
+F. Maxwell Harper and Joseph A. Konstan. 2015. The MovieLens Datasets: History and Context. ACM Transactions on Interactive Intelligent Systems (TiiS) 5, 4, Article 19 (December 2015), 19 pages. DOI=http://dx.doi.org/10.1145/2827872
+
