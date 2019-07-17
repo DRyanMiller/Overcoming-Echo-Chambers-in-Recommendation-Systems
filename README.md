@@ -9,7 +9,12 @@ In order to overcome the echo chamber problem, this project builds a system that
 3.	From the nearest cluster to the user’s cluster, a random selection of items is recommended to the user.
 4.	Step three can be repeated for the k nearest clusters.  In such a case, the proportion of total recommendations selected from a cluster is weighted by the cluster’s distance from the user’s cluster. (For example, for k=3 and a total of 10 recommendations, 5 recommendations may be selected from the nearest cluster, 3 from the second nearest, and 2 from the third nearest.)
 
-The project utilizes the MovieLens dataset (Harper & Konstan, 2015).  The MovieLens dataset is an open source data set containing 20,000,263 user ratings for 27,278 movies. 
+The project utilizes the MovieLens dataset (Harper & Konstan, 2015).  The [MovieLens](https://grouplens.org/datasets/movielens/) dataset is an open source data set containing 27,753,444 movie ratings from 283,228 users for 58,098 movies. The ratings are on a scale from 0.5 to 5 in increments of 0.5. The files include data from 
+January 09, 1995 and September 26, 2018.
+
+Users were selected at random for inclusion. All selected users had rated at least 1 movies. No demographic information is included. Each user is represented by an id, and no other information is provided.
+
+
 
 ==============================
 
