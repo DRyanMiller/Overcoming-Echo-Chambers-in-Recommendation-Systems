@@ -74,9 +74,9 @@ target/
 .ipynb_checkpoints/
 
 # exclude data from source control by default
-#/data/
-#/data/raw/
-#/data/processed/
+/data/
+/data/raw/
+/data/processed/
 
 # exclude archives by default
 /references/archive/
