@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 from joblib import load
 
+
 def test_custom():
     print("In custom module")
     return None
@@ -59,14 +60,13 @@ def get_recommendations(user_cluster):
             cluster_unique_top_movies = set(top_rated_movies(cluster, centroids, item_factors_unstacked)).difference(recommendation_set)
             recs = np.random.choice(list(cluster_unique_top_movies), size=4, replace=False)
             recommendation_set.update(recs)
-    print(list(recommendation_set))
+    return list(recommendation_set)
 
-
-def ALS_recommendations(user_ratings):
+def user_factors(user_ratings):
     rated_movies = [float(x[0]) for x in user_ratings]
     item_factors_pdf = pd.read_csv('../data/processed/item_factors.csv', index_col='Unnamed: 0')
     rated_item_factor = item_factors_pdf.loc[item_factors_pdf['id'].isin(rated_movies)].pivot(index='id', columns='value', values='features')
-    M = rated_item_factor.as_matrix()
+    M = rated_item_factor.values
     E = np.identity(42)
     nui = len(rated_movies)
     regParam = 0.15
@@ -74,6 +74,9 @@ def ALS_recommendations(user_ratings):
     A = M.T.dot(M)+regParam*nui*E
     V = M.T.dot(R.T)
     user_fac = np.linalg.inv(A).dot(V)
+    return user_fac
+
+def ALS_recommendations(user_fac):
     item_factors_unstacked = pd.read_csv('../data/processed/item_factors_unstacked.csv', index_col=['id'])
     user_movie_ratings = user_fac.dot(item_factors_unstacked.T)
     user_movie_ratings_df = pd.DataFrame(user_movie_ratings)
@@ -82,8 +85,7 @@ def ALS_recommendations(user_ratings):
     movies_df = pd.read_csv('../data/raw/movies.csv')
     user_top_10 = user_top_10.merge(movies_df, how='left', on='movieId')
     user_top_10.drop([0,'movieId', 'genres'], axis=1, inplace=True)
-    print(list(user_top_10.title))
-    return user_fac
+    return list(user_top_10.title)
 
 
 def get_user_cluster(user_fac):
