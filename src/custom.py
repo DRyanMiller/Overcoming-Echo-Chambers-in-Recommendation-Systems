@@ -63,6 +63,7 @@ def get_recommendations(user_cluster):
     return list(recommendation_set)
 
 def user_factors(user_ratings):
+    user_ratings.sort()
     rated_movies = [float(x[0]) for x in user_ratings]
     item_factors_pdf = pd.read_csv('../data/processed/item_factors.csv', index_col='Unnamed: 0')
     rated_item_factor = item_factors_pdf.loc[item_factors_pdf['id'].isin(rated_movies)].pivot(index='id', columns='value', values='features')
