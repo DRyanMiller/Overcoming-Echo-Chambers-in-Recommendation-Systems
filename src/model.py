@@ -28,7 +28,7 @@ def unstack(factor_df, rank):
     return factor_df_unstacked
 
 
-def Spark_KMeans_Eval(error):
+def evaluate_spark_kmeans(error):
     cluster = list(range(2, len(error)+2))
     plt.plot(cluster, error)
     plt.title('KMeans sum of squared distances of points\
