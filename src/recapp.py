@@ -2,7 +2,10 @@ from src import custom as cm
 
 
 def get_recommendations():
-    user_ratings = cm.get_user_rankings()
+    """Takes in user ratings and returns a list of
+    ten ALS recommendations and ten recommendations from
+    the two clusters nearest to the user's cluster."""
+    user_ratings = cm.get_user_ratings()
     user_fac = cm.get_user_factors(user_ratings)
     ALS_recs = cm.get_als_recommendations(user_fac)
     user_cluster = cm.get_user_cluster(user_fac)
