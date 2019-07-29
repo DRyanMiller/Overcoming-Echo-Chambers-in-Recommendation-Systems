@@ -90,3 +90,6 @@ target/
 
 # Mypy cache
 .mypy_cache/
+
+# exclude Final_Project_Test notebook
+/notebooks/Final_Project_Test.ipynb
