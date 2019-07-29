@@ -16,6 +16,7 @@ def test_model():
     print('In Model')
     pass
 
+
 def unstack(factor_df, rank):
     """Unstacks the factor arrays into pandas dataframes with factors as columns
     and users/items as rows"""
@@ -26,18 +27,21 @@ def unstack(factor_df, rank):
                                           values='features')
     return factor_df_unstacked
 
+
 def Spark_KMeans_Eval(error):
     cluster = list(range(2, len(error)+2))
     plt.plot(cluster, error)
-    plt.title('KMeans sum of squared distances of points to their nearest center')
+    plt.title('KMeans sum of squared distances of points\
+              to their nearest center')
     plt.xlabel('Number of Clusters')
     plt.show()
     error_diff = []
-    for i in list(range(0,56)):
+    for i in list(range(0, 56)):
         diff = error[i]-error[i+1]
         error_diff.append(diff)
     cluster_diff = list(range(2, len(error_diff)+2))
     plt.plot(cluster_diff, error_diff)
-    plt.title('Difference in KMeans sum of squared distances of points to their nearest center')
+    plt.title('Difference in KMeans sum of squared distances\
+              of points to their nearest center')
     plt.xlabel('Number of Clusters')
-    plt.show();
+    plt.show()
