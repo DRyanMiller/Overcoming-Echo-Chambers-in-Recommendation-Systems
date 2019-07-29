@@ -100,11 +100,12 @@ def user_rankings():
     user_ratings = []
     i = 0
     j = 0
+    print('Enter a ranking from 1 (lowest) to 5 (highest) for the following movies. If you have not seen the movie, press enter.')
     while j<9:
         title = ranking_list['title']
         movieId = ranking_list['movieId']
         #print(title.iloc[i])
-        user_rating = input('Enter a ranking for {} from 1 (lowest) to 5 (highest). If you have not seen the movie, press enter.'.format(title.iloc[i]))
+        user_rating = input('{}: '.format(title.iloc[i]))
         i +=1
         j = len(user_ratings)
         if user_rating=='':
