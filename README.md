@@ -31,13 +31,12 @@ Echo_Chamber
 │
 ├── data
 │   ├── processed : directory to hold interim and final versions of processed data.
-│   └── raw : holds original data. This data should be read only.
+│   ├── raw : holds original data. This data should be read only.
+│   └── test : holds a smaller dataset used to test the code.
 │
-├── models  : holds binary, json (among other formats) of initial, trained models.
+├── models  : holds classification model object and .py file with code used to implement ALS and KMeans in PySpark on AWS.
 │
-├── notebooks : holds notebooks for eda, model, and evaluation. Use naming convention yourInitials_projectName_useCase.ipynb
-│
-├── references : data dictionaries, user notes project, external references.
+├── notebooks : holds notebooks for eda (clean_drm_ec and AWS_data), model (model_drm_ec), and evaluation (evaluation_drm_e
 │
 ├── reports : interim and final reports, slides for presentations, accompanying visualizations.
 │   └── figures
@@ -47,26 +46,31 @@ Echo_Chamber
 ├── setup.py
 │
 ├── src : local python scripts. Pre-supplied code stubs include clean_data, model and visualize.
-    ├── __make_data__.py
+    ├── recapp.py
     ├── __settings__.py
-    ├── clean_data.py
     ├── custom.py
-    ├── model.py
-    └── visualize.py
+    └── model.py
+     
 
 ```
-
-# Use Case
+# Business Understanding
 Companies may want to provide recommendations for products outside a user’s typical recommendations in order to increase sales by getting current customers to buy additional items not previously purchased.
+
+# Data Understanding
+# Data Preparation
+# Modeling
+# Evaluation
+# Deployment
+
 
 # Models
 ALS recommendation engine
-HCA
+KMeans
+Gradient Boosting Machine
 
-Libraries
+# Libraries
 Numpy 
 Pandas
-Pyspark
 Scipy
 Sklearn
 Pyspark ML
@@ -74,30 +78,6 @@ Pyspark ML
 # Minimal Viable Product
 Recommender that can return 20 recommendations, 10 from ALS and 10 from echo chamber model.
 
-# Three Difficulties
-1.	How to run the models on AWS
-2.	How to productionize the models as a web application
-3.	How to get linter to work in Atom
-
-# Action plan/schedule 
-## Week 1
-Day 1 - Project Proposals
-
-Day 2 - First Stinky Model: based on the reduced version of the dataset. The model will include the ALS recommender and the HCA
-
-Day 3 -  Expand FSM: Get FSM to provide recommendations from nearest clusters.
-
-## Week 2
-
-Day 1 – AWS Implementation: Adapt code to full dataset and get code running on AWS
-
-Day 2 - Minimum viable Product 
-
-Day 3 – User Input: Adapt/develop user input code
-
-Day 4 - Substantial Completion, First Practice Presentation: Develop web application
-
-Day 5 – Finish Product: Finish developing web application
 
 ## Week 3 
 
