@@ -89,7 +89,7 @@ new_df = vecAssembler.transform(user_factors)
 new_df.show()
 
 WSSSEs = []
-K = range(2,20)
+K = range(2,60)
 for k in K:
     kmeans = KMeans(k=k, seed=1)
     clusters = kmeans.fit(new_df.select('features'))
