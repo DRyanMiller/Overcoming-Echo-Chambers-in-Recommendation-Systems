@@ -1,4 +1,4 @@
-# Addressing the Echo Chamber Problem in Recommendation Systems Using Movie Ratings
+# Overcoming Echo Chambers in Recommendation Systems (Using Movie Ratings)
 ==============================
 
 The purpose of this project is to create a recommendation system that overcomes the echo chamber problem.  The echo chamber problem occurs when additional information provided to a recommendation system results in a decrease in the diversity of recommendations for a given user.  The result is a recommendation system that reinforces a user’s recorded preferences and fails to provide recommendations outside the user’s typical purview. 
