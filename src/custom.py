@@ -169,12 +169,12 @@ def get_als_recommendations(user_factors):
     user_movie_ratings = user_factors.dot(item_factors_unstacked.T)
     user_movie_ratings_df = pd.DataFrame(user_movie_ratings)
     user_movie_ratings_df['movieId'] = item_factors_unstacked.T.columns
-    user_top_10 = user_movie_ratings_df.sort_values(0, ascending=False)\
-                                       .head(10)
-    movies_df = pd.read_csv('../data/raw/movies.csv')
-    user_top_10 = user_top_10.merge(movies_df, how='left', on='movieId')
-    user_top_10.drop([0, 'movieId', 'genres'], axis=1, inplace=True)
-    return list(user_top_10.title)
+    user_top_100 = user_movie_ratings_df.sort_values(0, ascending=False)\
+                                       .head(100)
+    most_rated = pd.read_csv('../data/processed/most_rated.csv')
+    user_top_100 = user_top_100.merge(most_rated, how='inner', on='movieId')
+    user_top_100.drop([0, 'movieId', 'genres'], axis=1, inplace=True)
+    return list(user_top_100.title[:10])
 
 
 def get_user_cluster(user_factors):
