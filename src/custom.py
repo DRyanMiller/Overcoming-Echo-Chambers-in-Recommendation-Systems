@@ -8,6 +8,7 @@ from joblib import load
 
 
 def test_custom():
+    """Tests success of function import."""
     print("In custom module")
     return None
 
