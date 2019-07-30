@@ -126,9 +126,8 @@ def get_user_ratings(top_100_path='../data/processed/top_100.csv'):
     user_ratings = []
     i = 0
     j = 0
-    print('Enter a ranking from 1 (lowest) to 5 (highest) for \
-          the following movies. If you have not seen the movie, \
-          press enter.')
+    print('Enter a ranking from 1 (lowest) to 5 (highest) for the following movies.')
+    print('If you have not seen the movie, press enter.')
     while j < 9:
         title = ranking_list['title']
         movieId = ranking_list['movieId']
