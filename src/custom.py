@@ -43,6 +43,22 @@ def get_nearest_clusters(cluster_distance_df, cluster):
     return two_nearest_clusters
 
 
+def get_furthest_clusters(cluster_distance_df, cluster):
+    """Returns the ID of the two clusters furthest from the specified cluster.
+    Parameters
+    ----------
+    cluster_distance_df : dataframe
+        A dataframe containing the distances between
+        each pair of clusters.
+    cluster: integer
+        An integer indicating the ID of the cluster for which
+        the nearest clusters are being identified."""
+    sorted_distances = cluster_distance_df[cluster].sort_values(ascending=False)
+    two_nearest_clusters = sorted_distances[0:2].index.values.astype(int)
+    return two_nearest_clusters
+
+
+
 def get_centroid_ratings(centroids, item_factors_unstacked):
     """Returns the ALS movie ratings for each centroid.
     Parameters
