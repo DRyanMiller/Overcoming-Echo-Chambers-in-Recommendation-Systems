@@ -77,7 +77,7 @@ def get_centroid_ratings(centroids, item_factors_unstacked):
     return centroid_ratings_T_df
 
 
-def get_top_rated_movies(cluster, centroids, item_factors_unstacked, 
+def get_top_rated_movies(cluster, centroids, item_factors_unstacked,
                          most_rated_path='../data/processed/most_rated.csv'):
     """Returns the top-rated movies for a specified cluster.
     Parameters
@@ -142,7 +142,7 @@ def get_user_ratings(top_100_path='../data/processed/top_100.csv'):
     return user_ratings
 
 
-def get_user_factors(user_ratings, 
+def get_user_factors(user_ratings,
                      item_factors_path='../data/processed/item_factors.csv',
                      als_features=42):
     """Returns the ALS-type user factors for the user
@@ -196,7 +196,7 @@ def get_als_recommendations(user_factors,
     user_movie_ratings_df = pd.DataFrame(user_movie_ratings)
     user_movie_ratings_df['movieId'] = item_factors_unstacked.T.columns
     user_top_100 = user_movie_ratings_df.sort_values(0, ascending=False)\
-                                       .head(100)
+                                        .head(100)
     most_rated = pd.read_csv(most_rated_path)
     user_top_100 = user_top_100.merge(most_rated, how='inner', on='movieId')
     user_top_100.drop([0, 'movieId', 'genres'], axis=1, inplace=True)
