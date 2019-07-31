@@ -67,10 +67,25 @@ def filter_dataframe(df, groupby_var, inequality_type, column=None, value=0):
     return ratings_filtered
 
 
-def make_features(df, cols, new_cols):
-    """ Stub to create and or transform features :
-    :param: df : dataframe and column names create or transform features
-    
-    """
-
-    pass
+def get_factors(client, bucket, key, num_of_files):
+    """Returns a single dataframe of factors. Used to combine the multiple
+    csv files generated during the AWS implementation of the ALS model.
+    Parameters
+    ----------
+    bucket: string
+        Name of the S3 bucket containing the factors.
+    key: string
+        Path to the factor files with the last digit(s) of the part number
+        replaced with {}.
+    num_of_files: int
+        The number of files to import."""
+    factors = []
+    for i in list(range(0, num_of_files)):
+        obj = client.get_object(Bucket=bucket,
+                                Key=key.format(i))
+        factor_df = pd.read_csv(obj['Body'], header=None)
+        print('File {} has {} rows.'.format(i, len(factor_df)))
+        factors.append(factor_df)
+    factors_combined = pd.concat(factors, axis=0, ignore_index=True)
+    factors_combined.columns = ['id', 'features']
+    return factors_combined
