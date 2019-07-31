@@ -105,8 +105,6 @@ def get_top_rated_movies(cluster, centroids, item_factors_unstacked,
                           how='inner',
                           left_on='id',
                           right_on='movieId')
-    # top_100_movies = top_movies.sort_values(by='rating',
-    #                                         ascending=False )[:100]
     return top_movies.title
 
 
