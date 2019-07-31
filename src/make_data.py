@@ -41,7 +41,7 @@ def filter_dataframe(df, groupby_var, inequality_type, column=None, value=0):
     column: string
         The name of the column to return counts for.
     inequality: string
-        The inequality used to filter data (i.e., >, <, >=, <=). 
+        The inequality used to filter data (i.e., >, <, >=, <=).
     value: int
         The value use with the inequality to filter.
     filter_var: string
@@ -56,7 +56,7 @@ def filter_dataframe(df, groupby_var, inequality_type, column=None, value=0):
     elif inequality_type == '<=':
         filter_ = get_agg_counts(df, groupby_var, column=column) <= value
     filter_ = filter_.reset_index()
-    ratings_with_filter = df.merge(filter_, on = groupby_var, how = 'left')
+    ratings_with_filter = df.merge(filter_, on=groupby_var, how='left')
     try:
         ratings_with_filter.drop(['timestamp'], axis=1, inplace=True)
     except:
