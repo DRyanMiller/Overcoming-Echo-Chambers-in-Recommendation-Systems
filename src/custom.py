@@ -58,7 +58,6 @@ def get_furthest_clusters(cluster_distance_df, cluster):
     return two_nearest_clusters
 
 
-
 def get_centroid_ratings(centroids, item_factors_unstacked):
     """Returns the ALS movie ratings for each centroid.
     Parameters
