@@ -66,7 +66,7 @@ The second metric looks at a user's Top 100 ALS recommendations (based on predic
 The model performed as expected on this metric. As demonstrated in the above graph, for most of the sample less than 10% of the ALS recommended movies were also recommended by the augmented model. 
 
 
-**The Thrid Metric**
+**The Third Metric**
 
 The third metric utilizes the distance between movies (based on the ALS item factors) to evaluate the extent to which the movies from the augmented model are qualitatively different from the movies from the ALS model. For this metric, the mean squared distance between the Top 100 movies from the ALS model (excluding the distance between a movie and itself) is calculated for each user in the sample. Likewise, the mean squared distance between each of the Top 100 ALS movies and each of the top movies from augmented model is calculated for each user in the sample. The difference between these mean squared distances for the sample are tested using a t-test. A negative and statistically significant t-statistic indicates the mean difference between the two sets of recommendations is greater than the mean difference within the ALS recommendations and, thus, the movies from the augmented model are qualitatively different from the movies from the ALS model.
 
