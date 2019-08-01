@@ -53,7 +53,7 @@ As discussed above, the augmented recommendation model was evaluated using four 
 
 The first metric looks at a user's Top 100 ALS recommendations (based on predicted user ratings) and the Top 100 recommendations from the user's cluster (based on the cluster centroid's ratings). The proportion of the ALS recommended movies also found in the cluster recommendations should be high. A high proportion indicates that the user's cluster is representative of the user's movie preferences.
 
-![image](../reports/figures/metric1.png)
+![image](https://github.com/DRyanMiller/Overcoming-Echo-Chambers-in-Recommendation-Systems/blob/master/reports/figures/Metric1.png)
 
 The model did not perform as expected on this metric. As the graph above demonstrates, for most of the sample less than 10% of the ALS recommended movies were also recommended by the user's cluster. This may be a result of using the cluster centroid to identify recommendations. A different method of identifying the top rated movies in each cluster (e.g., average ratings of users in the cluster) may produce better results. 
 
@@ -61,7 +61,7 @@ The model did not perform as expected on this metric. As the graph above demonst
 
 The second metric looks at a user's Top 100 ALS recommendations (based on predicted user ratings) and the top recommendations from the augmented model (based on the cluster centroid's ratings for the two clusters nearest to the user's cluster). The proportion of the ALS recommended movies also found in the augmented model recommendations should be small. A low proportion indicates that the recommendations from the augmented model differ from those produced by the ALS model.
 
-![image](../reports/figures/metric2.png)
+![image](https://github.com/DRyanMiller/Overcoming-Echo-Chambers-in-Recommendation-Systems/blob/master/reports/figures/Metric2.png)
 
 The model performed as expected on this metric. As demonstrated in the above graph, for most of the sample less than 10% of the ALS recommended movies were also recommended by the augmented model. 
 
