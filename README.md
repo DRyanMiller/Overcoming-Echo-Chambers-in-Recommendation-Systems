@@ -81,11 +81,15 @@ As expected, the augmented recommendations are less different from the ALS recom
 # Next Steps
 
 Future work can improve upon this project by:
+
     1. Enhancing the ALS model through incorporation of more sophisticated algorithm features (e.g., a time 
        component),
+       
     2. Improving the performance of the gradient boosting machine classification through parameter tuning, 
+    
     3. Improving the performance of the augmented recommendation model by changing how 
        movie recommendations are generated from the clusters, and
+       
     4. Deploying the augmented recommendation function as a web application.
     
 # References
