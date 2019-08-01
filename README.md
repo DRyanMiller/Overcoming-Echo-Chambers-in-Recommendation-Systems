@@ -19,7 +19,7 @@ The second metric evaluates the overlap between the ALS recommendations and the 
 
 The third metric evaluates the whether the recommendations from the augmented model are qualitatively different from those of the ALS model. This metric utilizes a t-test for the difference in means. A negative and statistically significant t-statistic indicates items recommended by the augmented model are qualitatively different from those recommended by the ALS model. 
 
-The final metric evaluates whether the items recommended by the augmented model are too qualitatively different from the ALS recommendations. This metric utilizes a t-test for the difference in differences. A positive and statistically significant t-statistic indicates the augmented recommendations are not as qualitatively different from the ALS recommendations as other potential recommendations. This metric is taken as a indicator that the augmented recommendations are not so different from the ALS recommendations as to be uninteresting to the user. Additional information about the evaluation metrics used in this project can be found in <a href='#Evaluation'>Section 1.5</a> ("Evaluation") and in the evaluation_drm_ec notebook. 
+The final metric evaluates whether the items recommended by the augmented model are too qualitatively different from the ALS recommendations. This metric utilizes a t-test for the difference in differences. A positive and statistically significant t-statistic indicates the augmented recommendations are not as qualitatively different from the ALS recommendations as other potential recommendations. This metric is taken as a indicator that the augmented recommendations are not so different from the ALS recommendations as to be uninteresting to the user. Additional information about the evaluation metrics used in this project can be found in evaluation section below and in the evaluation_drm_ec notebook. 
 
 # Data Understanding and Preparation
 
@@ -31,7 +31,7 @@ After fitting the ALS model (see below) using Amazon Web Services (AWS) Elastic 
 
 # Modeling
 
-![image](../reports/figures/RecProcess.png)
+![image](https://github.com/DRyanMiller/Overcoming-Echo-Chambers-in-Recommendation-Systems/blob/master/reports/figures/RecProcess.png)
 
 The above diagram outlines the process the augmented recommendation system follows to generate recommendations. Throughout this process, the augmented recommendation system utilizes three machine learning algorithms to produce movie recommendations: Alternative Least Squares (ALS), KMeans, and a Gradient Boosting Machine. The following explains how the process works and how the machine learning algorithms play into the process. 
 
