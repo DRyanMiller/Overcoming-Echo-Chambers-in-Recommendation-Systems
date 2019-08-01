@@ -21,6 +21,12 @@ filename = 's3://{}/{}'.format(bucket, 'ratings_processed.csv')
 movie_ratings = spark.read.csv(filename, header='true', inferSchema='true')
 
 # Build ALS model with grid search and cross-validation
+# Examples of hyperparameter values for tuning are
+# provided below. In practice, the parameters were
+# tuned on a smaller version of the dataset (n=100,000).
+# The choice to tune on the smaller dataset was made due to
+# the computational and monetary costs associated with
+# tuning on the complete dataset. 
 als_model = ALS(userCol="userId", itemCol="movieId", ratingCol="rating",
                 coldStartStrategy="drop")
                
